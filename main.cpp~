@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <math.h>
+#include <vector>
+#include <raylib.h>
+
+#define SCREEN_HEIGHT 600
+#define SCREEN_WIDTH 800
+
+struct Calculations {
+
+  std::vector<double> calculateNextIteration(double constantZ, double multiplierIZ, double constantC, double multiplierIC) {
+  
+    std::vector<double> squareResult = {constantZ*constantZ + multiplierIZ*multiplierIZ, 2*constantZ*multiplierIZ};
+    std::vector<double> result = {squareResult[0] + constantC, squareResult[1] + multiplierIC};
+  
+    return result;
+  
+  }
+};
+  
+
+int main() {
+
+  Calculations calculations;
+
+  double constantC = 0.5;
+  double multiplierIC = 1;
+  
+  std::vector<double> result = calculations.calculateNextIteration(0.5, 1.0, constantC, multiplierIC);
+  std::vector<double> result2 = calculations.calculateNextIteration(result[0], result[1], constantC, multiplierIC);
+									  
+  printf("%f, %f\n", result[0], result[1]);
+  printf("%f, %f\n", result2[0], result2[1]);
+  
+  return 0;
+}
