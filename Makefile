@@ -1,10 +1,10 @@
-CC = gcc
-
-TARGET = main
+CC = g++
 
 SRC = main.cpp
 
-FLAGS = -I/usr/include/raylib -L/usr/lib -lstdc++ -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+TARGET = main
+
+FLAGS = -I/usr/local/include/GLFW -L/usr/lib -lglfw3 -lGLEW -lGLU -lstdc++ -lGL -lm -lpthread -ldl -lrt -lX11
 
 $(TARGET): $(SRC)
-	$(CC) -g -o $(TARGET) $(SRC) $(FLAGS)
+	$(CC) $(SRC) $(FLAGS) -o $(TARGET)
